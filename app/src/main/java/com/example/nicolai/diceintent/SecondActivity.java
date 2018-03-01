@@ -23,17 +23,17 @@ import java.util.ArrayList;
 
 public class SecondActivity extends ListActivity {
 
-    Die m_friends;
-    FriendAdapter fa;
+    Die m_dice;
+    DiceAdapter fa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setTitle("Friend Activity 03");
+        this.setTitle("DiceHistory");
 
-        m_friends = new Die();
+        m_dice = new Die();
 
-        fa = new FriendAdapter(this, R.layout.resultcell, m_friends.getAll());
+        fa = new DiceAdapter(this, R.layout.resultcell, m_dice.getAll());
         this.setListAdapter(fa);
     }
 
@@ -47,16 +47,16 @@ public class SecondActivity extends ListActivity {
     public void onListItemClick(ListView parent,
                                 View v, int position, long id) {
         // position is in the list!
-        Toast.makeText(this, "Hi " + m_friends.getAll().get(position).getResult() + "! Have you done your homework?",
+        Toast.makeText(this, "You rolled " + m_dice.getAll().get(position).getResult() + "! Good job!",
                 Toast.LENGTH_LONG).show();
     }
 }
 
-class FriendAdapter extends ArrayAdapter<BEDiceHistory> {
+class DiceAdapter extends ArrayAdapter<BEDiceHistory> {
 
     static String TAG = "LIST03";
 
-    private ArrayList<BEDiceHistory> friends;
+    private ArrayList<BEDiceHistory> die;
     private final int[] colours = {
             Color.parseColor("#AAAAAA"),
             Color.parseColor("#EEEEEE"),
@@ -64,10 +64,11 @@ class FriendAdapter extends ArrayAdapter<BEDiceHistory> {
     };
 
 
-    public FriendAdapter(Context context, int textViewResourceId,
-                         ArrayList<BEDiceHistory> friends) {
-        super(context, textViewResourceId, friends);
-        this.friends = friends;
+    public DiceAdapter(Context context, int textViewResourceId,
+                         ArrayList<BEDiceHistory> die) {
+        super(context, textViewResourceId, die);
+        this.die = die;
+        //die.add(new BEDiceHistory());
     }
 
     @Override
@@ -86,7 +87,7 @@ class FriendAdapter extends ArrayAdapter<BEDiceHistory> {
         v.setBackgroundColor(colours[position % colours.length]);
 
 
-        BEDiceHistory f = friends.get(position);
+        BEDiceHistory f = die.get(position);
 
         TextView name = v.findViewById(R.id.diceHistoryResult);
 
