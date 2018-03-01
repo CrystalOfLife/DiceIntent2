@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNext() {
-        BEDiceHistory move = new BEDiceHistory(History1.getText().toString());
+        String move = History1.getText().toString();
         Intent intent = new Intent();
         intent.setClass(this, SecondActivity.class);
         intent.putExtra("Dice", move);

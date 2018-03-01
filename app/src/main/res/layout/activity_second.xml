@@ -15,7 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Info from launcer"
-
         android:textSize="@dimen/abc_text_size_medium_material"
         android:textColor="#152b3b"/>
-</LinearLayout>
+    </LinearLayout>

@@ -6,6 +6,7 @@ package com.example.nicolai.diceintent;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,11 +30,14 @@ public class SecondActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setTitle("DiceHistory");
+        Intent intent = getIntent();
+        String move = intent.getStringExtra("Dice");
 
         m_dice = new Die();
 
         fa = new DiceAdapter(this, R.layout.resultcell, m_dice.getAll());
         this.setListAdapter(fa);
+        m_dice.die.add(new BEDiceHistory(move));
     }
 
     @Override
