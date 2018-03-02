@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     };
     int PickedImage, holdPicked;
     Random r;
+    String[] returnList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         History4 = findViewById(R.id.History4);
         History5 = findViewById(R.id.History5);
         r = new Random();
+
+        Intent intent = getIntent();
+        String[] relist = intent.getStringArrayExtra("list");
+        returnList = relist;
 
         Roll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         randomDice();
         dice2.setImageResource(images[PickedImage]);
         updateHistory();
+        onClickNext();
     }
 
     private void updateHistory()
@@ -103,11 +109,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickNext() {
         String move = History1.getText().toString();
-        String move3 = History2.getText().toString();
+        String[] relist = returnList;
         Intent intent = new Intent();
         intent.setClass(this, SecondActivity.class);
+        intent.putExtra("relist", relist);
         intent.putExtra("Dice", move);
-        intent.putExtra("Dice2", move3);
         startActivity(intent);
     }
 }

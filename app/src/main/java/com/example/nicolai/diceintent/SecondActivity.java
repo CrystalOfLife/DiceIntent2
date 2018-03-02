@@ -33,13 +33,17 @@ public class SecondActivity extends ListActivity {
         this.setTitle("DiceHistory");
         Intent intent = getIntent();
         String move = intent.getStringExtra("Dice");
-        String move3 = intent.getStringExtra("Dice2");
+        String[] relist = intent.getStringArrayExtra("relist");
         m_dice = new Die();
 
         fa = new DiceAdapter(this, R.layout.resultcell, m_dice.getAll());
         this.setListAdapter(fa);
         m_dice.die.add(new BEDiceHistory(move));
-        m_dice.die.add(new BEDiceHistory(move3));
+        if (relist != null) {
+            for (String e : relist) {
+                m_dice.die.add(new BEDiceHistory(e.toString()));
+            }
+        }
     }
 
     @Override
@@ -52,8 +56,11 @@ public class SecondActivity extends ListActivity {
     public void onListItemClick(ListView parent,
                                 View v, int position, long id) {
         // position is in the list!
-        Toast.makeText(this, "You rolled " + m_dice.getAll().get(position).getResult() + "! Good job!",
-                Toast.LENGTH_LONG).show();
+        String[] list = m_dice.getDice();
+        Intent intent = new Intent();
+        intent.setClass(this, MainActivity.class);
+        intent.putExtra("list", list);
+        startActivity(intent);
     }
 }
 
@@ -64,8 +71,7 @@ class DiceAdapter extends ArrayAdapter<BEDiceHistory> {
     private ArrayList<BEDiceHistory> die;
     private final int[] colours = {
             Color.parseColor("#AAAAAA"),
-            Color.parseColor("#EEEEEE"),
-            Color.parseColor("#435612")
+            Color.parseColor("#EEEEEE")
     };
 
 
