@@ -19,10 +19,7 @@ public class Die {
     public Die()
     {
         die = new ArrayList<BEDiceHistory>();
-        die.add(new BEDiceHistory("3 + 1"+ "  " + formattedDate ));
-        die.add(new BEDiceHistory("6 + 6"+ "  " + formattedDate));
-        die.add(new BEDiceHistory("2 + 4"+ "  " + formattedDate));
-        die.add(new BEDiceHistory("5 + 2"+ "  " + formattedDate));
+
 
     }
 
