@@ -8,10 +8,15 @@ import android.widget.ImageView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
+    Calendar c = Calendar.getInstance();
+    SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+    String formattedDate = df.format(c.getTime());
 
     ImageView dice1, dice2;
     Button Roll, Clear, btnNext;;
@@ -76,11 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateHistory()
     {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+        String formattedDate = df.format(c.getTime());
         History5.setText(History4.getText());
         History4.setText(History3.getText());
         History3.setText(History2.getText());
         History2.setText(History1.getText());
-        History1.setText((holdPicked + 1) + " + " + (1 + PickedImage) + " = " + (holdPicked + 1 + 1 + PickedImage));
+        History1.setText((holdPicked + 1) + " + " + (1 + PickedImage) + " = " + (holdPicked + 1 + 1 + PickedImage + " " + formattedDate ));
     }
 
     private void clearHistory()
