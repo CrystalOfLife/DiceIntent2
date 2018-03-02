@@ -14,6 +14,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
+
     Calendar c = Calendar.getInstance();
     SimpleDateFormat df = new SimpleDateFormat("HH:mm");
     String formattedDate = df.format(c.getTime());
@@ -102,10 +103,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickNext() {
         String move = History1.getText().toString();
+        String move3 = History2.getText().toString();
         Intent intent = new Intent();
         intent.setClass(this, SecondActivity.class);
         intent.putExtra("Dice", move);
-
+        intent.putExtra("Dice2", move3);
         startActivity(intent);
     }
 }
