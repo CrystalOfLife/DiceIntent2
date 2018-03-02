@@ -33,13 +33,20 @@ public class SecondActivity extends ListActivity {
         this.setTitle("DiceHistory");
         Intent intent = getIntent();
         String move = intent.getStringExtra("Dice");
-        String move3 = intent.getStringExtra("Dice2");
+        String move2 = intent.getStringExtra("Dice2");
+        String move3 = intent.getStringExtra("Dice3");
+        String move4 = intent.getStringExtra("Dice4");
+        String move5 = intent.getStringExtra("Dice5");
+
         m_dice = new Die();
 
         fa = new DiceAdapter(this, R.layout.resultcell, m_dice.getAll());
         this.setListAdapter(fa);
         m_dice.die.add(new BEDiceHistory(move));
+        m_dice.die.add(new BEDiceHistory(move2));
         m_dice.die.add(new BEDiceHistory(move3));
+        m_dice.die.add(new BEDiceHistory(move4));
+        m_dice.die.add(new BEDiceHistory(move5));
     }
 
     @Override

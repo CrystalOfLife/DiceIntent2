@@ -103,11 +103,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickNext() {
         String move = History1.getText().toString();
-        String move3 = History2.getText().toString();
+        String move2 = History2.getText().toString();
+        String move3 = History3.getText().toString();
+        String move4 = History4.getText().toString();
+        String move5 = History5.getText().toString();
         Intent intent = new Intent();
         intent.setClass(this, SecondActivity.class);
         intent.putExtra("Dice", move);
-        intent.putExtra("Dice2", move3);
+        intent.putExtra("Dice2", move2);
+        intent.putExtra("Dice3", move3);
+        intent.putExtra("Dice4", move4);
+        intent.putExtra("Dice5", move5);
         startActivity(intent);
     }
 }
