@@ -13,7 +13,7 @@ public class Die {
     public Die()
     {
         die = new ArrayList<BEDiceHistory>();
-        die.add(new BEDiceHistory("3 +1"));
+        die.add(new BEDiceHistory("3 + 1"));
         die.add(new BEDiceHistory("6 + 6"));
         die.add(new BEDiceHistory("2 + 4"));
         die.add(new BEDiceHistory("5 + 2"));
