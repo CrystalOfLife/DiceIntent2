@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     String formattedDate = df.format(c.getTime());
 
     ImageView dice1, dice2;
-    Button Roll, Clear, btnNext;;
+    Button Roll, btnNext;;
     TextView History1, History2, History3, History4, History5;
     int[] images = {
             R.drawable.dice1, R.drawable.dice2, R.drawable.dice3,
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Roll = findViewById(R.id.Roll);
-        Clear = findViewById(R.id.Clear);
         btnNext = findViewById(R.id.btnNext);
         dice1 = findViewById(R.id.dice1);
         dice2 = findViewById(R.id.dice2);
@@ -56,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 rollDice();
             }
         });
-        Clear.setOnClickListener(new View.OnClickListener() {
+       /* Clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clearHistory();
             }
-        });
+        });*/
         btnNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

@@ -39,6 +39,15 @@ public class SecondActivity extends ListActivity {
         fa = new DiceAdapter(this, R.layout.resultcell, m_dice.getAll());
         this.setListAdapter(fa);
         m_dice.die.add(new BEDiceHistory(move));
+// the if move != null makes the next button  open a window without adding dies and values, but a bug appeared where we could only add 1 dice to the listview by doing so
+       /**
+         if (move != null)
+        {
+            m_dice.die.add(new BEDiceHistory(move));
+
+        }
+        */
+
         if (relist != null) {
             for (String e : relist) {
                 m_dice.die.add(new BEDiceHistory(e.toString()));
