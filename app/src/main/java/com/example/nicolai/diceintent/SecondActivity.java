@@ -5,21 +5,10 @@ package com.example.nicolai.diceintent;
  */
 
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 
 public class SecondActivity extends ListActivity {
@@ -49,61 +38,29 @@ public class SecondActivity extends ListActivity {
     @Override
     public void onResume() {
         super.onResume();
+        Intent intent = getIntent();
+        String[] relist = intent.getStringArrayExtra("relist");
+        if (relist != null) {
+            for (String e : relist) {
+                m_dice.die.add(new BEDiceHistory(e.toString()));
+            }
+        }
         fa.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override
     public void onListItemClick(ListView parent,
                                 View v, int position, long id) {
-        // position is in the list!
         String[] list = m_dice.getDice();
+        onPause();
         Intent intent = new Intent();
         intent.setClass(this, MainActivity.class);
         intent.putExtra("list", list);
         startActivity(intent);
-    }
-}
-
-class DiceAdapter extends ArrayAdapter<BEDiceHistory> {
-
-    static String TAG = "LIST03";
-
-    private ArrayList<BEDiceHistory> die;
-    private final int[] colours = {
-            Color.parseColor("#AAAAAA"),
-            Color.parseColor("#EEEEEE")
-    };
-
-
-    public DiceAdapter(Context context, int textViewResourceId,
-                         ArrayList<BEDiceHistory> die) {
-        super(context, textViewResourceId, die);
-        this.die = die;
-        //die.add(new BEDiceHistory());
-    }
-
-    @Override
-    public View getView(int position, View v, ViewGroup parent) {
-
-        if (v == null) {
-            LayoutInflater li = (LayoutInflater) getContext().getSystemService(
-                    Context.LAYOUT_INFLATER_SERVICE);
-
-            v = li.inflate(R.layout.resultcell, parent,false);
-            Log.d(TAG, "Position: " + position + " View created");
-        }
-        else
-            Log.d(TAG, "Position: " + position + " View Reused");
-
-        v.setBackgroundColor(colours[position % colours.length]);
-
-
-        BEDiceHistory f = die.get(position);
-
-        TextView name = v.findViewById(R.id.diceHistoryResult);
-
-        name.setText(f.getResult());
-
-        return v;
     }
 }
