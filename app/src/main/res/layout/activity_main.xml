@@ -55,12 +55,6 @@
             android:text="Next" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="History:"
-        android:textStyle="bold" />
-
     <LinearLayout
         android:id="@+id/History"
         android:orientation="vertical"
@@ -72,43 +66,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/History2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/History3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/History4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/History5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textSize="20dp"/>
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:visibility="gone" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/Clear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:textAllCaps="false"/>
 
 </LinearLayout>
